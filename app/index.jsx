@@ -1,26 +1,27 @@
 import { useRef, useState } from "react";
-import { Image, StyleSheet, Text, View, Pressable } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 import { ActionButton } from "../components/actionButton";
 import { FokusButton } from "../components/fokusButton";
 import { Timer } from "../components/Timer";
+import { IconPlay, IconPause } from "../components/icons";
 
 const pomodoro = [
   {
     id: "focus",
-    initialValue: 25,
+    initialValue: 25 * 60,
     image: require("./pomodoro.png"),
     display: "Foco",
   },
   {
     id: "short",
-    initialValue: 5,
+    initialValue: 5 * 60,
     image: require("./short.png"),
     display: "Pausa Curta",
   },
   {
     id: "long",
-    initialValue: 15,
+    initialValue: 15 * 60,
     image: require("./long.png"),
     display: "Pausa Longa",
   },
@@ -85,6 +86,7 @@ export default function Index() {
         <FokusButton
           onPress={toggleTimer}
           title={timerRunning ? "Pausar" : "Começar"}
+          icon={timerRunning ? <IconPause /> : <IconPlay />}
         />
       </View>
       <View style={styles.footer}>
